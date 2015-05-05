@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Auth;
 use DB;
+use Input;
 use Illuminate\Http\Request;
 
 class CharacterController extends Controller {
@@ -34,6 +35,16 @@ class CharacterController extends Controller {
 		return view('characters', array('chars' => $char_arr, 'num_chars' => $num));
 	}
 
+	public function create_new()
+	{
+		$stats = array();
+		for ($i = 0; $i < 4; $i++)
+		{
+			array_push($stats,rand(1, 8));
+		}
+		$gbl = $stats;
+		return view('characters-new', array('st' => $stats));
+	}
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -41,7 +52,28 @@ class CharacterController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		$input = Input::get('name');
+		$class = Input::get('class-type');
+		$class = strtoupper($class);
+		$gbl = Input::get('st');
+
+		DB::table('char')->insert(array(
+			'owner_id' => Auth::user()->id,
+			'name' => $input,
+			 'level' => 1,
+			 'gold' => 100,
+			 'experience' => 1,
+			 'class' => $class,
+			 'current_location' => 1,
+			 'hp' => 100,
+			 'str' => $gbl[0],
+			 'dex' => $gbl[1],
+			 'int' => $gbl[2],
+			 'luk' => $gbl[3],
+			));
+
+		return redirect()->action('CharacterController@index');
+
 	}
 
 

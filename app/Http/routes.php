@@ -17,6 +17,11 @@ Route::get('home', 'HomeController@index');
 
 Route::get('characters', 'CharacterController@index');
 
+Route::get('characters/new', 'CharacterController@create_new');
+
+Route::post('characters', 'CharacterController@create');
+
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

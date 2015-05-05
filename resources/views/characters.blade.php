@@ -15,7 +15,7 @@
 				@endif
 				</div>
 				<div align="right">
-				<a href="characters/new"> create new</a>
+				<a href="characters/new"> @if (isset($data)) $data @endif create new</a>
 				</div>
 				</div>
 
