@@ -1,0 +1,84 @@
+.pseudo-combo {
+  font-family: sans-serif;
+  width: 300px;
+  height: 2em;
+  line-height: 1em;
+  border: 1px solid #aaa;
+  position: relative;
+  
+  &:after {
+    content: '\25BC';
+    position: absolute;
+    color: #666;
+    border-left: 1px solid #aaa;
+    padding: 0.5em;
+    right: 0;
+    top: 0;
+  }
+  
+  &:hover {
+    height: auto;
+
+    &:after {
+      display: none;
+    }
+
+    label {
+      position: static;
+    }
+    
+    input:checked + span {
+      font-weight: bold;
+    }
+    
+    input + span {
+      visibility: visible;
+    }
+  }
+  
+/*
+  &:active {
+    height: 2em;
+    
+    label {
+      position: absolute;
+      
+      span {
+        font-weight: normal !important;  
+      }
+      
+      &:active span {
+        font-weight: bold !important;
+      }
+    }
+  }
+*/  
+  label {
+    display: block;
+    padding: 0.5em;
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    cursor: pointer;
+    
+    &:hover {
+      background: #eee;
+    }    
+  }
+
+  input {
+    width: 0;
+    margin: 0;
+    visibility: hidden;
+    
+    & + span {
+      visibility: hidden;
+    }
+    
+    &:checked {
+      & + span {
+        visibility: visible;
+      }
+    }
+  }
+}
