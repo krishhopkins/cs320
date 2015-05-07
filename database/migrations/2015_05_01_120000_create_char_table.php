@@ -20,8 +20,9 @@ class CreateCharTable extends Migration {
 			$table->integer('level');
 			$table->integer('gold');
 			$table->integer('experience');
-			$table->enum("class", 
-				array('WARRIOR', 'MAGE', 'HEALER', 'MONK'));
+			//$table->enum("class", 
+			//	array('WARRIOR', 'MAGE', 'HEALER', 'MONK'));
+			$table->integer('class')->unsigned();
 			$table->integer('current_location')->unsigned();
 			$table->integer('hp');
 			$table->integer('str');

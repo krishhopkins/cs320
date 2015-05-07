@@ -15,6 +15,7 @@ class CreateFkTable extends Migration {
 		Schema::table('char', function(Blueprint $table)
 		{
 			$table->foreign('owner_id')->references('id')->on('users')->onDelete('cascade');
+			$table->foreign('class')->references('id')->on('class')->onDelete('cascade');
 			$table->foreign('current_location')->references('id')->on('location')->onDelete('cascade');
 		});
 	}
