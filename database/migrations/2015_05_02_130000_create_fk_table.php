@@ -29,8 +29,8 @@ class CreateFkTable extends Migration {
 	{
 		Schema::table('char', function(Blueprint $table)
 		{
-
 			$table->dropForeign('char_owner_id_foreign');
+			$table->dropForeign('char_class_foreign');
 			$table->dropForeign('char_current_location_foreign');
 		});
 	}

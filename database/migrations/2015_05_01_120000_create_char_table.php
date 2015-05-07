@@ -29,6 +29,8 @@ class CreateCharTable extends Migration {
 			$table->integer('dex');
 			$table->integer('int');
 			$table->integer('luk');
+			$table->boolean('isBanned');
+			$table->string('ban_reason');
 			$table->timestamps();
 		});
 	}

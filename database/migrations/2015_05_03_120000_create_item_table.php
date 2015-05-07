@@ -24,6 +24,7 @@ class CreateItemTable extends Migration {
 			$table->integer('bonus_dex')->nullable();
 			$table->integer('bonus_int')->nullable();
 			$table->integer('bonus_luk')->nullable();
+			$table->integer('price');
 		});
 	}
 
