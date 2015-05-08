@@ -11,19 +11,34 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+//Route::get('/', 'HomeController@index');
+Route::get('/', 'PagesController@about');
 
-Route::get('home', 'HomeController@index');
 
+Route::get('home', 'CharacterController@index');
+
+/* characters */
 Route::get('characters', 'CharacterController@index');
-
 Route::get('characters/new', 'CharacterController@create_new');
-
 Route::post('characters', 'CharacterController@create');
+/* characters actions */
+Route::get('characters/{name}/inventory', 'CharacterController@inventory');
+Route::get('characters/{name}/delete', function($id)
+{
+	return view('characterdeleteconf')->with('name', $id);
+});
+Route::get('characters/{name}/delete/cfm', 'CharacterController@delete_c');
+Route::get('characters/{name}/more', 'CharacterController@info');
+Route::get('characters/{name}/inventory', 'ShopController@iindex');
 
-Route::get('content/about', 'PagesController@about');
 
-Route::get('new', 'PagesController@newc');
+/* shop */
+Route::get('shop', 'ShopController@index');
+
+/* inventory */
+Route::get('inventory', 'ShopController@iindex_all');
+
+Route::get('new', 'CharacterController@create_new');
 
 Route::post('/', 'CharacterController@create');
 

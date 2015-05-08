@@ -40,10 +40,9 @@ class CharacterController extends Controller {
 		$stats = array();
 		for ($i = 0; $i < 4; $i++)
 		{
-			array_push($stats,rand(1, 8));
+			array_push($stats,rand(1, 6));
 		}
-		$gbl = $stats;
-		return view('home', array('st' => $stats));
+		return view('newcharacter', array('st' => $stats, 'empty' => null));
 	}
 	/**
 	 * Show the form for creating a new resource.
@@ -52,13 +51,14 @@ class CharacterController extends Controller {
 	 */
 	public function create()
 	{
-
-		$arr = Input::getAll();
-		print_r($arr);
-		$input = Input::get('name');
+		$input = Input::get('nickname');
 		$class = Input::get('class-type');
 		$class = strtoupper($class);
-		$gbl = Input::get('st');
+		$str = Input::get('st0');
+		$dex = Input::get('st1');
+		$int = Input::get('st2');
+		$luk = Input::get('st3');
+
 
 		DB::table('char')->insert(array(
 			'owner_id' => Auth::user()->id,
@@ -69,10 +69,10 @@ class CharacterController extends Controller {
 			 'class' => $class,
 			 'current_location' => 1,
 			 'hp' => 100,
-			 'str' => $gbl[0],
-			 'dex' => $gbl[1],
-			 'int' => $gbl[2],
-			 'luk' => $gbl[3],
+			 'str' => $str,
+			 'dex' => $dex,
+			 'int' => $int,
+			 'luk' => $luk,
 			));
 
 		return redirect()->action('CharacterController@index');
@@ -86,11 +86,16 @@ class CharacterController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function delete()
 	{
-		//
+		return view('characterdeleteconf');
 	}
 
+	public function delete_c($name)
+	{
+		$result = DB::table('char')->where('name', $name)->delete();
+		return redirect()->action('CharacterController@index');
+	}
 
 	/**
 	 * Update the specified resource in storage.
