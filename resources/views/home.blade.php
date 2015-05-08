@@ -2,8 +2,24 @@
 
 @section('content')
   <div class="container">
-  <h2>Your Characters | <a href="#"> Create new character</a></h2>
-  <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>            
+  <h2>Your Characters | 
+
+    <!-- Button HTML (to Trigger Modal) -->
+    <a href="new" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal">Create new character</a>
+    
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Content will be loaded here from "remote.php" file -->
+            </div>
+        </div>
+    </div>
+
+
+
+  </h2>
+  <p>You have [num] characters. All of them are in good standing!</p>            
   <table class="table">
     <thead>
       <tr>

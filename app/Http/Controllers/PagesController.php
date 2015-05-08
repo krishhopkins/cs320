@@ -23,4 +23,9 @@ class PagesController extends Controller {
 		return view('content.about');
 	}
 
+	public function newc()
+	{
+		return view('newcharacter');
+	}
+
 }
