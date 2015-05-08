@@ -27,7 +27,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">DB : The MMO</a>
+                <a class="navbar-brand" href="/">DB : The MMO</a>
             </div>
             <!-- the menus -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -35,11 +35,11 @@
                 @if (Auth::guest())
                     <li><a href="{{ url('auth/login') }}">Login</a></li>
                     <li><a href="{{ url('auth/register') }}">Register</a></li>
-                    <li><a href="{{ url('content/about') }}">About</a></li>
+                    <li><a href="{{ url('/') }}">About</a></li>
                 @else
-                    <li><a href="#">Characters</a></li>
-                    <li><a href="#">Inventory</a></li>
-                    <li><a href="#">Shop</a></li>
+                    <li><a href="{{url('characters')}}">Characters</a></li>
+                    <li><a href="{{url('inventory')}}">Inventory</a></li>
+                    <li><a href="{{url('shop')}}">Shop</a></li>
                     <li><a href="{{ url('/auth/logout') }}">Logout</a></li>
                 @endif
                 </ul>

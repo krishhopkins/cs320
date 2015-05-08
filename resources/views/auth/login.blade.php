@@ -25,13 +25,18 @@
     </div>
     <div class="form-group">
         <input type="password" class="form-control" placeholder="Password" name="password">
+            <span class="pull-right"><a href="#">Forgot Password?</a></span>
     </div>
+
+    <div class="form-group">
+        <input type="checkbox" placeholder="Password" name="remember">
+            <span>Remember me</span>
+    </div>
+
+    <br/>
     <div class="form-group">
         <button class="btn btn-primary btn-block">Login</button>
-        <!--
-        <span><a href="#">Need help?</a></span>
-        <span class="pull-right"><a href="#">New Registration</a></span>
-        -->
+        
     </div>
 </form>
 </div>

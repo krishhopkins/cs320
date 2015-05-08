@@ -1,35 +1,44 @@
 @extends('app')
 
 @section('content')
- <div class="container">
-  <h2>Create a new Character</h2>
-  <form role="form" method="POST" action="{{ url('/') }}">
-    <div class="form-group">
-      <label for="email">Nickname:</label>
-      <input type="text" class="form-control" id="nickname" placeholder="nickname">
-      <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
+    <!-- Page Content -->
+    <div class="container">
+  <h1>Create a new character</h1>
+  <form role="form" method="POST" action="{{url('characters')}}">
+              <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    <div class="form-group">
+      <label for="nickname">Nickname:</label>
+      <input type="text" style="width: 200px;" class="form-control" name="nickname" id="nickname" placeholder="nickname">
     </div>
     <div class="form-group">
-      <label for="pwd">Class:</label>
-      <div class="dropdown">
-        <label class="radio-inline">
-      <input type="radio" name="warrior">WARRIOR
-    </label>
-    <label class="radio-inline">
-      <input type="radio" name="mage">MAGE
-    </label>
-    <label class="radio-inline">
-      <input type="radio" name="class">HEALER
-    </label>
-    <label class="radio-inline">
-      <input type="radio" name="monk">MONK
-    </label>
-  </div>
-    </div>
-    <button type="submit" class="btn btn-default">Create Character</button>
-  </form>
+  <label for="class-type">Class:</label>
+   <label class="checkbox-inline">
+      <input type="radio" name="class-type" id="class-type"
+         value="1" checked> Warrior
+   </label>
+   <label class="checkbox-inline">
+      <input type="radio" name="class-type" id="class-type" 
+         value="2"> Mage
+   </label>
+   <label class="checkbox-inline">
+      <input type="radio" name="class-type" id="class-type" 
+         value="3"> Monk
+   </label>
+   <label class="checkbox-inline">
+      <input type="radio" name="class-type" id="class-type" 
+         value="4"> Healer
+   </label>
+   <div class="form-group">
+   <label for="stats">Stats: </label>      @foreach($st as $i) {{ $i }} @endforeach
 </div>
+    <!-- insecure - fix later -->
+    <?php $j = 0 ?>
+    @foreach($st as $i)
+    <input type="hidden" name="st{{$j++}}" value="{{ $i }}">
+    @endforeach
+    <button type="submit" class="btn btn-default">create new character</button>
+
     <!-- jQuery Version 1.11.1 -->
     <script src="js/jquery.js"></script>
 
