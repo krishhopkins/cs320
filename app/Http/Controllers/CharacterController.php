@@ -32,7 +32,7 @@ class CharacterController extends Controller {
 			array_push($char_arr, $curr);
 		}
 
-		return view('characters', array('chars' => $char_arr, 'num_chars' => $num));
+		return view('home', array('chars' => $char_arr, 'num_chars' => $num));
 	}
 
 	public function create_new()
@@ -43,7 +43,7 @@ class CharacterController extends Controller {
 			array_push($stats,rand(1, 8));
 		}
 		$gbl = $stats;
-		return view('characters-new', array('st' => $stats));
+		return view('home', array('st' => $stats));
 	}
 	/**
 	 * Show the form for creating a new resource.
@@ -52,6 +52,9 @@ class CharacterController extends Controller {
 	 */
 	public function create()
 	{
+
+		$arr = Input::getAll();
+		print_r($arr);
 		$input = Input::get('name');
 		$class = Input::get('class-type');
 		$class = strtoupper($class);

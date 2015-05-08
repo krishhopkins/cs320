@@ -25,6 +25,8 @@ Route::get('content/about', 'PagesController@about');
 
 Route::get('new', 'PagesController@newc');
 
+Route::post('/', 'CharacterController@create');
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

@@ -2,24 +2,9 @@
 
 @section('content')
   <div class="container">
-  <h2>Your Characters | 
-
-    <!-- Button HTML (to Trigger Modal) -->
-    <a href="new" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal">Create new character</a>
-    
-    <!-- Modal HTML -->
-    <div id="myModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!-- Content will be loaded here from "remote.php" file -->
-            </div>
-        </div>
-    </div>
-
-
-
+  <h2>Your Characters | <a href="{{ url('new') }}">Create a new character</a>
   </h2>
-  <p>You have [num] characters. All of them are in good standing!</p>            
+  <p>You have {{ "1" }} characters. All of them are in good standing!</p>            
   <table class="table">
     <thead>
       <tr>
